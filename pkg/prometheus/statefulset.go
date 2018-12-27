@@ -337,6 +337,7 @@ func makeStatefulSetSpec(p monitoringv1.Prometheus, c *Config, ruleConfigMapName
 			"-storage.tsdb.retention="+p.Spec.Retention,
 			"-web.enable-lifecycle",
 			"-storage.tsdb.no-lockfile",
+			"-rules.alert.resend-delay=30s",
 		)
 
 		if p.Spec.Query != nil && p.Spec.Query.LookbackDelta != nil {
