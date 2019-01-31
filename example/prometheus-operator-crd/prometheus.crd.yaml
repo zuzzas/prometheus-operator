@@ -2169,6 +2169,10 @@ spec:
                 is '24h', and must match the regular expression `[0-9]+(ms|s|m|h|d|w|y)`
                 (milliseconds seconds minutes hours days weeks years).
               type: string
+            retentionSize:
+              description: '[EXPERIMENTAL] Maximum number of bytes that can be stored
+                for blocks. Units supported: KB, MB, GB, TB, PB.'
+              type: string
             routePrefix:
               description: The route prefix Prometheus registers HTTP handlers for.
                 This is useful, if using ExternalURL and a proxy is rewriting HTTP

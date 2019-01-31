@@ -356,6 +356,12 @@ func makeStatefulSetSpec(p monitoringv1.Prometheus, c *Config, ruleConfigMapName
 				promArgs = append(promArgs, "-rules.alert.resend-delay="+p.Spec.Rules.Alert.ResendDelay)
 			}
 		}
+
+		if version.Minor >= 7 {
+			if p.Spec.RetentionSize != "" {
+				promArgs = append(promArgs, "-storage.tsdb.retention.size="+p.Spec.RetentionSize)
+			}
+		}
 	default:
 		return nil, errors.Errorf("unsupported Prometheus major version %s", version)
 	}
